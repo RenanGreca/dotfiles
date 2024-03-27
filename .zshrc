@@ -138,9 +138,9 @@ alias zz="z -"
 
 # API Keys
 # Retrieved from https://www.notion.so/my-integrations/
-export NOTION_TOKEN=$(cat .NOTION_TOKEN)
+export NOTION_TOKEN=$(cat ~/.NOTION_TOKEN)
 # Retrieved from https://developer.todoist.com/appconsole.html
-export TODOIST_TOKEN=$(cat .TODOIST_TOKEN)
+export TODOIST_TOKEN=$(cat ~/.TODOIST_TOKEN)
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
