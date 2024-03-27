@@ -86,14 +86,23 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='lvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# PATH extensions
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/Users/renangreca/.local/bin:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -103,24 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
 alias diff='/opt/homebrew/Cellar/diffutils/3.10/bin/diff'
-
-export NOTION_TOKEN=secret_Tng8Qgvlzgd5J1vdJQaKauLOVfDc3kf2M4h7pDG0Xug
-export TODOIST_TOKEN=25ab3f747bd27cd7323671e4650662e805c76ab5
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export DEVKITPRO=/opt/devkitpro
-export DEVKITARM=/opt/devkitpro/devkitARM
-
-export PATH="/Users/renangreca/.local/bin:$PATH"
-
 # Aliases for eza
 alias ls="eza"
 alias ll="eza -l"
@@ -144,10 +136,17 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias zz="z -"
 
-# Aliases for Go
-# alias air='$(go env GOPATH)/bin/air'
-# alias templ='$(go env GOPATH)/bin/air'
-PATH="$(go env GOPATH)/bin:$PATH"
+# API Keys
+# Retrieved from https://www.notion.so/my-integrations/
+export NOTION_TOKEN=$(cat .NOTION_TOKEN)
+# Retrieved from https://developer.todoist.com/appconsole.html
+export TODOIST_TOKEN=$(cat .TODOIST_TOKEN)
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM
 
 # Additional ZSH plugins installed with brew
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -157,7 +156,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 prompt_dir() {
   prompt_segment green $CURRENT_FG '%c'
 }
-
 
 # Pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
