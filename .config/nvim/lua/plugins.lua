@@ -57,7 +57,7 @@ require("lazy").setup({
 
   {
     -- Display pending keybindings activated by the header key
-    'folke/which-key.nvim', 
+    'folke/which-key.nvim',
     opts = {},
   },
   {
@@ -113,12 +113,18 @@ require("lazy").setup({
   require 'config/telescope',
   -- file navigator
   require('config/nvim-tree'),
-  -- autocomplete pop-up for commands
-  require('config/wilder'),
   -- GitHub copilot
-  require('config/copilot'),
+  -- require('config/copilot'),
   -- code autocompletion
   require('config/coc'),
+
+  require('plugin.go'),
+  require('plugin.rust'),
+  require('plugin.pkl'),
+  require('plugin.obsidian'),
+  require('plugin.markdown'),
+  require('plugin.neotest'),
+  require('plugin.wilder'),
 },
 -- ! what is the second parameter?
 {})

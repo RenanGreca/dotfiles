@@ -6,7 +6,7 @@ vim.g.maplocalleader = ' '
 -- prevent default behavior of space
 vim.keymap.set({'n', 'v'}, '<Space>', '<Nop>', {silent = true})
 
-vim.keymap.set("n", "v", "viw") -- Select current word
+-- vim.keymap.set("n", "v", "viw") -- Select current word
 -- Clipboard shortcuts
 if vim.g.vscode then
   -- for some reason, vscode doesn't like the decriptions
