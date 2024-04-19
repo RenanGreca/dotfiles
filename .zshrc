@@ -113,11 +113,11 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias diff='/opt/homebrew/Cellar/diffutils/3.10/bin/diff'
-# Aliases for eza
-alias ls="eza"
-alias ll="eza -l"
-alias la="eza -la"
-alias tree="eza --tree"
+# Aliases for ls alternatives - eza or lsd
+alias ls="lsd"
+alias ll="lsd -l"
+alias la="lsd -la"
+alias tree="lsd --tree"
 
 # Aliases for bat
 alias cat="bat"

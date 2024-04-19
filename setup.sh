@@ -8,5 +8,8 @@ brew bundle install
 # https://ohmyz.sh/
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Pull and update submodules
+git submodule update --init --recursive
+
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
