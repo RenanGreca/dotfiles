@@ -10,5 +10,3 @@ if vim.g.vscode then
 else
   require('plugins')
 end
-
-

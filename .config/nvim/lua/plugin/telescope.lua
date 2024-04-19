@@ -13,7 +13,16 @@ local function config()
   local sorters = require "telescope.sorters"
   local builtin = require "telescope.builtin"
 
-  vim.keymap.set('n', '<Leader>f', builtin.find_files, opts('Telescope', 'Find files'))
+  -- vim.keymap.set('n', '<Leader>f', builtin.find_files, opts('Telescope', 'Find files'))
+  local keymaps = {
+    ["f"] = {
+        builtin.find_files,
+        Hint(require('icons').ui.FindFile, "Find File"),
+      },
+  }
+
+  local wk = require('which-key')
+  wk.register(keymaps, {prefix = "<leader>" })
 
 end
 

@@ -29,7 +29,16 @@ local function config()
         api.tree.focus() 
     end
 
-    vim.keymap.set('n', '<Leader>e', api.tree.toggle, opts('NvimTree', 'Toggle'))
+    -- vim.keymap.set('n', '<Leader>e', api.tree.toggle, opts('NvimTree', 'Toggle'))
+    local keymaps = {
+        ["e"] = {
+            api.tree.toggle,
+            Hint(require('icons').ui.Tree, "Tree toggle"),
+        },
+    }
+
+    local wk = require('which-key')
+    wk.register(keymaps, {prefix = "<leader>" })
 end
 
 return {
@@ -37,7 +46,7 @@ return {
     version = "*",
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+        "nvim-tree/nvim-web-devicons",
     },
     config = config,
     enabled = true,

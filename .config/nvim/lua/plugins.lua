@@ -55,11 +55,7 @@ require("lazy").setup({
     opts = {}
   },
 
-  {
-    -- Display pending keybindings activated by the header key
-    'folke/which-key.nvim',
-    opts = {},
-  },
+  
   {
     -- Configures the statusline (above the commandline)
     'nvim-lualine/lualine.nvim',
@@ -105,18 +101,20 @@ require("lazy").setup({
     }
   },
 
+  -- WhichKey & related keymaps
+  require('plugin.whichkey'),
   -- LSP
   require 'config/lsp',
   -- Autocompletion
   require 'config/nvim-cmp',
   -- file finder
-  require 'config/telescope',
+  require('plugin/telescope'),
   -- file navigator
   require('config/nvim-tree'),
   -- GitHub copilot
   -- require('config/copilot'),
   -- code autocompletion
-  require('config/coc'),
+  require('plugin.coc'),
 
   require('plugin.go'),
   require('plugin.rust'),

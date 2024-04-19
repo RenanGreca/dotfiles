@@ -22,20 +22,20 @@ else
 end
 
 -- By default, don't store a copy when deleting lines/words/characters
-vim.keymap.set({"n","v"}, "x", [["_x]])
-vim.keymap.set({"n","v"}, "d", [["_d]])
-vim.keymap.set({"n","v"}, "D", [["_D]])
+-- vim.keymap.set({"n","v"}, "x", [["_x]])
+-- vim.keymap.set({"n","v"}, "d", [["_d]])
+-- vim.keymap.set({"n","v"}, "D", [["_D]])
 
 -- Use <leader>[command] in order to store a copy (cut)
-vim.keymap.set({"n","v"}, "<leader>x", [[""x]], {
-  desc = 'Cut selected text',
-})
-vim.keymap.set({"n","v"}, "<leader>d", [[""d]], {
-  desc = 'Cut selected text',
-})
-vim.keymap.set({"n","v"}, "<leader>D", [[""D]], {
-  desc = 'Cut current line',
-})
+-- vim.keymap.set({"n","v"}, "<leader>x", [[""x]], {
+--   desc = 'Cut selected text',
+-- })
+-- vim.keymap.set({"n","v"}, "<leader>d", [[""d]], {
+--   desc = 'Cut selected text',
+-- })
+-- vim.keymap.set({"n","v"}, "<leader>D", [[""D]], {
+--   desc = 'Cut current line',
+-- })
 
 -- Swap behavior of [] and {}
 vim.keymap.set({"n","v"}, "{", "[")
@@ -77,7 +77,7 @@ vim.keymap.set('n', '<S-Tab>', '<<', {
   desc = 'Unindent current line',
   silent = true
 })
-vim.keymap.set('n', '<Leader><Tab>', 'gg=G', {
-  desc = 'Autoindent entire file',
-  silent = true
-})
+-- vim.keymap.set('n', '<Leader><Tab>', 'gg=G', {
+--   desc = 'Autoindent entire file',
+--   silent = true
+-- })

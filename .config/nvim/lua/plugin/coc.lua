@@ -6,6 +6,10 @@ return {
     dependencies = {
         'HerringtonDarkholme/yats.vim',
     },
+    config = function()
+        -- Below mapping not working -- ctrl-y works.
+        vim.keymap.set({"i"}, "<c-@>", "coc#refresh()", {silent=true, expr=true})
+    end,
 }
 
 -- Plugins:

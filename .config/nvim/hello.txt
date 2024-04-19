@@ -1,0 +1,14 @@
+hello world
+Ola renan
+eu acho que consegui
+certo
+
+const values = [
+{a: 3423, b: 3433},
+{a: 3424, b: 342},
+{a: 342, b: 526},
+{a: 46346, b: 57547},
+{a: 4364, b: 45235},
+]
+
+const values = [{a: 3423, b: 3433 }]
