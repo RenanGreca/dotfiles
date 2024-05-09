@@ -100,8 +100,8 @@ leader.mappings["w"] = {
   k = { "<C-w>k", "  Move up"},
   l = { "<C-w>l", "  Move right"},
 }
-leader.mappings["w"]["<Left>"] = { ":bprev<cr>", " 󰮳 Previous buffer" }
-leader.mappings["w"]["<Right>"] = { ":bnext<cr>", " 󰮳 Next buffer" }
+leader.mappings["w"]["<left>"] = { ":bprev<cr>", " 󰮳 previous buffer" }
+leader.mappings["w"]["<right>"] = { ":bnext<cr>", " 󰮳 next buffer" }
 -- Tabs
 vim.keymap.set('n', '<C-Left>', '<cmd>bprev<cr>', {
   desc = 'Go to previous buffer'
@@ -150,8 +150,11 @@ leader.vmappings['F'] = {
 leader.mappings['b']['c'] = { "<cmd>BufferKill<CR>", "Close Buffer"}
 leader.mappings['c'] = {}
 
+
+-- leader.mappings['m']['c'] = { "i- [ ]<ESC>", "Checkbox" }
+
 -- leader.mappings["m"] = {
---   name
+--   name = " Markdown",
 --   ["h"] = {
 --     -- Toggle check-boxes.
 --     action = function()

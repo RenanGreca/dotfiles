@@ -12,6 +12,7 @@ export ZSH="/Users/renangreca/.oh-my-zsh"
 # ZSH_THEME="agnoster"
 # DEFAULT_USER=$USER
 # prompt_context() {}
+# This is overridden by the Pure settings below.
 ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
@@ -89,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -113,14 +114,20 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias diff='/opt/homebrew/Cellar/diffutils/3.10/bin/diff'
-# Aliases for ls alternatives - eza or lsd
-alias ls="lsd"
-alias ll="lsd -l"
-alias la="lsd -la"
-alias tree="lsd --tree"
+# Aliases for ls alternative eza
+# List files showing nerdfont icons and git status
+alias ls="eza --icons --git"
+# Display file details in a table, from newest to oldest
+alias ll="ls -l --sort oldest"
+# Also display hidden files
+alias la="ls -la --sort oldest"
+# Display file with sizes, from largest to smallest
+alias lr="ls -la --reverse --sort size"
+alias tree="ls --tree"
 
-# Aliases for bat
+# Aliases for cat alternative bat
 alias cat="bat"
+export BAT_THEME="Sublime Snazzy"
 
 # Aliases for ripgrep
 alias grep="rg"
@@ -131,6 +138,20 @@ alias fzf="fzf --preview 'bat --color=always {}'"
 source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 source /opt/homebrew/opt/fzf/shell/completion.zsh
 source ~/.config/fzf-git.sh/fzf-git.sh
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+  
+  case "$command" in
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}" "$@" ;;
+    ssh) fzf --preview 'dig {}' "$@" ;;
+    *) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
 
 # Aliases for z
 eval "$(zoxide init zsh)"
@@ -162,3 +183,6 @@ prompt_dir() {
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
+
+# thefuck
+eval $(thefuck --alias)

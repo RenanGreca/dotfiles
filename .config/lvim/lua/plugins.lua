@@ -17,6 +17,7 @@ lvim.plugins = {
   require('plugin.rust'),
   require('plugin.go'),
   -- require('plugin.catppuccin'),
+  require('plugin.pkl'),
 
 }
 

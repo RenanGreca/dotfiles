@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- [[ Autoformat Go files on save ]]
 local format_sync_group = vim.api.nvim_create_augroup('GoFormat', {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
