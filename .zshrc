@@ -75,7 +75,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos xcode docker fzf golang ripgrep zoxide)
+plugins=(git macos xcode docker fzf golang ripgrep zoxide pass)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -140,6 +140,14 @@ source /opt/homebrew/opt/fzf/shell/completion.zsh
 source ~/.config/fzf-git.sh/fzf-git.sh
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 
+_fzf_complete_pass() {
+  _fzf_complete -- "$@" < <(
+    PASS_PATH=$(echo ~/.password-store)
+    PWD_FILES=$(find $PASS_PATH -type f -name "*.gpg" | sed -e "s:$PASS_PATH/::" | sed -e "s:\.gpg::")
+    echo $PWD_FILES  
+  )
+}
+
 _fzf_comprun() {
   local command=$1
   shift
@@ -148,6 +156,8 @@ _fzf_comprun() {
     cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
     export|unset) fzf --preview "eval 'echo $'{}" "$@" ;;
     ssh) fzf --preview 'dig {}' "$@" ;;
+    # pass) find ~/.password-store -type f -name "*.gpg" -printf "%P\n" | fzf --preview 'pass {}' "$@" ;;
+    pass) fzf --preview 'pass {}' "$@" ;;
     *) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
@@ -164,6 +174,11 @@ export NOTION_TOKEN=$(cat ~/.NOTION_TOKEN)
 # Retrieved from https://developer.todoist.com/appconsole.html
 export TODOIST_TOKEN=$(cat ~/.TODOIST_TOKEN)
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -182,7 +197,10 @@ prompt_dir() {
 # Pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
+# zstyle ':prompt:pure:prompt:*'
+PURE_PROMPT_SYMBOL=' ❯'
 prompt pure
 
 # thefuck
 eval $(thefuck --alias)
+eval "$(mise activate zsh)"
