@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/renangreca/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -124,6 +124,8 @@ alias la="ls -la --sort oldest"
 # Display file with sizes, from largest to smallest
 alias lr="ls -la --reverse --sort size"
 alias tree="ls --tree"
+
+alias venv="source env/bin/activate"
 
 # Aliases for cat alternative bat
 alias cat="bat"
